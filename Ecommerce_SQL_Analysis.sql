@@ -124,16 +124,16 @@ ORDER BY total_revenue DESC;
 SELECT * FROM city_revenue LIMIT 10;
 
 -- Query 18: Stored Procedure
-DELIMITER  //
+DELIMITER  
 CREATE PROCEDURE GetTopCustomers(IN limit_count INT)
 BEGIN
    SELECT o.customer_id,
    ROUND(SUM(payment_value),2) AS total_spent
    FROM orders o JOIN payments p ON o.order_id=p.order_id
-   GROUP BY c.customer_id
+   GROUP BY o.customer_id
    ORDER BY total_spent DESC 
    LIMIT limit_count;
-END  
+END;  
 DELIMITER ;
 
 CALL GetTopCustomers(10);
