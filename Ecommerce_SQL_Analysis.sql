@@ -124,7 +124,7 @@ ORDER BY total_revenue DESC;
 SELECT * FROM city_revenue LIMIT 10;
 
 -- Query 18: Stored Procedure
-DELIMITER  
+DELIMITER // 
 CREATE PROCEDURE GetTopCustomers(IN limit_count INT)
 BEGIN
    SELECT o.customer_id,
